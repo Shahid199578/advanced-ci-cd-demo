@@ -15,6 +15,7 @@ jobs:
       - name: Show GitHub variable
         run: |
           echo "The public variable is: ${{ vars.DEMO_VARIABLE }}"
+          echo "The public variable is: ${{ vars.another_VARIABLE }}"
 
       - name: Show GitHub secret (masked)
         run: |
@@ -23,7 +24,7 @@ jobs:
       - name: Use both in a script
         run: |
           echo "Combining values..."
-          echo "Variable + Secret = ${{ vars.DEMO_VARIABLE }}-${{ secrets.DEMO_SECRET }}" >> ./output.txt
+          echo "Variable + Secret = ${{ vars.DEMO_VARIABLE }}-${{ secrets.DEMO_SECRET }}- ${{ vars.another_VARIABLE}}" >> ./output.txt
           cat ./output.txt
       - name: Upload output file as artifact
         uses: actions/upload-artifact@v4
