@@ -1,0 +1,12 @@
+{
+  "name": "advanced-ci-cd-demo",
+  "version": "1.0.0",
+  "description": "Advanced CI/CD with GitHub Actions demo",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo 'Building app...' && mkdir dist && echo '<h1>App Build</h1>' > dist/index.html",
+    "test": "echo 'Running tests...' && mkdir reports && echo 'All tests passed' > reports/test-report.txt"
+  },
+  "author": "Your Name",
+  "license": "MIT"
+}

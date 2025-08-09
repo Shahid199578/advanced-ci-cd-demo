@@ -1,0 +1,32 @@
+name: Secrets and Variables Demo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Show GitHub variable
+        run: |
+          echo "The public variable is: ${{ vars.DEMO_VARIABLE }}"
+
+      - name: Show GitHub secret (masked)
+        run: |
+          echo "The secret is: ${{ secrets.DEMO_SECRET }}"
+
+      - name: Use both in a script
+        run: |
+          echo "Combining values..."
+          echo "Variable + Secret = ${{ vars.DEMO_VARIABLE }}-${{ secrets.DEMO_SECRET }}" >> ./output.txt
+          cat ./output.txt
+      - name: Upload output file as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: demo-output
+          path: ./output.txt
